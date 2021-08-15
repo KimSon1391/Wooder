@@ -1,0 +1,35 @@
+// css footer
+footer {
+    background-color: black;
+    width: 100%;
+    padding: 2rem 0 1rem;
+    color: white;
+    margin-top: 8.9rem;
+    .container {
+        @include flexbox(space-between, center);
+        height: 100%;
+        .logoft {
+            height: 100%;
+        }
+        .copy,
+        .backtotop {
+            height: 100%;
+            font-size: 1.2rem;
+            color: #b0b0b0;
+        }
+    }
+    @include xs {
+        margin-top: 5.9rem;
+        .container {
+            flex-direction: column-reverse;
+            .copy {
+                margin-top: 1rem;
+            }
+        }
+
+        .backtotop {
+            display: none;
+        }
+    }
+}
+    

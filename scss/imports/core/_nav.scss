@@ -1,0 +1,45 @@
+// css navigator (Menu)
+
+.bgopacity {
+    @include fullscreen(true);
+    background: rgba(0, 0, 0, 0.608);
+    z-index: 1;
+    @include visible(0);
+    &.active {
+        @include visible(1);
+    }
+}
+
+.nav {
+    display: block;
+    position: fixed;
+    @include size(60vw, 70rem);
+    z-index: 3;
+    top: 0;
+    right: 0;
+    background: $black-cl;
+    @include visible(0);
+    @include transform(translateX(100%));
+    @include transition($t);
+    &.active {
+        @include visible(1);
+        @include transform(none);
+        @include transition($t);
+    }
+    ul {
+        @include mid();
+        text-align: center;
+        width: 100%;
+        a {
+            display: inline-block;
+            padding: 2rem 0;
+            width: 100%;
+            color: $white-cl;
+            text-transform: uppercase;
+        }
+    }
+
+    @include xs {
+        @include size(70vw, 45rem);
+    }
+}

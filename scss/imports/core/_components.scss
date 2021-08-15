@@ -1,0 +1,115 @@
+// css components
+
+.content__txt {
+    .title {
+        @include text(4rem, pnB, 83.3px, $black-cl, uppercase, 1.12px);
+        cursor: pointer;
+    }
+    .desc {
+        @include text(1.6rem, pnR, 22px, $txt-color, none, 0.4px);
+        @include overtext(3);
+    }
+    &.--right {
+        text-align: right;
+    }
+    &.--center {
+        text-align: center;
+    }
+    &.--lineleft {
+        padding: 7.2rem 3.9rem 0 9.6rem;
+        .title {
+            position: relative;
+            &::after {
+                @include pseudo();
+                @include absoluteCenter(top);
+                left: -9.6rem;
+                @include size(7.6rem, 1px);
+                background: $black-cl;
+            }
+        }
+    }
+    &.--lineright {
+        padding: 6.2rem 9.6rem 0 3.9rem;
+        .title {
+            position: relative;
+            &::after {
+                @include pseudo();
+                @include absoluteCenter(top);
+                right: -9.6rem;
+                @include size(7.6rem, 1px);
+                background: $black-cl;
+                z-index: 1;
+            }
+        }
+    }
+    &.--lineleft,
+    &.--lineright {
+        @include sm {
+            padding: 0;
+            .title {
+                &::after {
+                    content: none;
+                }
+            }
+        }
+    }
+}
+
+//Popup Video
+.popup-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    @include mid(true);
+    z-index: 10;
+    @include visible(0);
+    &.active {
+        @include visible(1);
+    }
+    .iframe__wrap {
+        position: relative;
+        border: 3px solid $white-cl;
+        @include size(100%);
+        max-width: 60rem;
+        max-height: 33.8rem;
+        iframe {
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+        }
+    }
+    .close {
+        overflow: inherit;
+        position: absolute;
+        right: -2rem;
+        top: -2rem;
+        @include positionabsolute(-2rem, -2rem);
+        @include br(10rem);
+        font-size: 3rem;
+        font-weight: bold;
+        @include size(4rem);
+        background: $white-cl;
+        @include mid(true);
+        cursor: pointer;
+    }
+
+    @include xs {
+        .iframe__wrap {
+            padding-bottom: 56.25%;
+            position: relative;
+            @include size(80%);
+            iframe {
+                left: 0;
+                top: 0;
+                height: 100%;
+                width: 100%;
+                position: absolute;
+            }
+        }
+    }
+}

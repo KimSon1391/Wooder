@@ -1,0 +1,48 @@
+/*primary colors*/
+$white-cl: #fff;
+$black-cl: #000;
+$primary-color: #bea67c;
+
+/*global text color*/
+$txt-color: #464646;
+$text-cl: #000;
+
+// timing transition
+$t: 0.4s;
+$cubic: cubic-bezier(0.72, 0.43, 0.13, 0.64);
+
+/*font families*/
+$font-stack: "Open Sans", sans-serif;
+$font-main: pnR;
+
+/*headings typo*/
+$fz-text: 16px;
+$lh-text: normal;
+
+$fz-text-m: 16px;
+$lh-text-m: normal;
+
+$heightHeader: 8rem;
+
+$pd: 9.6rem;
+$lineH2: 7.9rem;
+//============================================================//
+
+/*BOXED LAYOUT*/
+$container-max-width: 100%;
+$container-width: 1010px; // tùy thuộc vào container của bản thiết kế mà chỉnh sửa cho hợp lý
+$container-fluid-padding: 30px;
+$container-mb-padding: 15px;
+
+/*GRID - media queries breakpoints*/
+$xxs-min: 576px; // CÓ THỂ TÙY CHỈNH
+$xs-min: 768px; // KHÔNG THAY ĐỔI
+$sm-min: 992px; // KHÔNG THAY ĐỔI
+$md-min: 1200px; // KHÔNG THAY ĐỔI
+$lg-min: 1600px; // CÓ THỂ TÙY CHỈNH
+
+$xxs-max: ($xxs-min - 1); // Small Mobile
+$xs-max: ($xs-min - 1); // Mobile
+$sm-max: ($sm-min - 1); // Tablet
+$md-max: ($md-min - 1); // Desktop
+$lg-max: ($lg-min - 1); // Large Desktop

@@ -1,0 +1,195 @@
+// css button, title, icon, elements...
+
+.slide-btn {
+    position: relative;
+    @include flexbox(center, center);
+    @include text(14px, pnB, 48.3px, $white-cl, uppercase, 3.2px);
+    border: 1px solid $white-cl;
+    width: 100%;
+    max-width: 28rem;
+    margin: 0 auto;
+    @include transition($t);
+    span {
+        margin-right: 1.9rem;
+        @include transition($t);
+    }
+    &::after {
+        content: "";
+        @include fullscreen();
+        background: $primary-color;
+        @include transform(scaleX(0));
+        @include transform-origin(left);
+        @include transition($t);
+    }
+    &:hover {
+        &::after {
+            @include transform(scaleX(1));
+            @include transition($t);
+        }
+        span {
+            z-index: 1;
+            color: $white-cl;
+            letter-spacing: 6px;
+            @include transition($t);
+        }
+        i {
+            z-index: 1;
+        }
+    }
+    @include xs {
+        font-size: 12px;
+        line-height: 38.3px;
+        max-width: 20rem;
+    }
+}
+
+.more-btn {
+    display: block;
+    margin-top: 1rem;
+    span {
+        @include text(1.4rem, pnB, 57.33px, $text-cl, uppercase, 3.2px);
+        position: relative;
+        &::before {
+            @include pseudo();
+            @include positionabsolute(null, null, -6px, 0px);
+            @include size(3.7rem, 2px);
+            background: $primary-color;
+            @include transition($t);
+        }
+    }
+    img {
+        display: inline-block;
+        @include transition($t);
+    }
+    &:hover {
+        span::before {
+            width: 98%;
+            @include transition($t);
+        }
+        img {
+            @include transform(translateX(2rem) scale(1.3));
+            @include transition($t);
+        }
+    }
+}
+
+.navbtn {
+    margin-left: 1.5rem;
+    @include size(3.5rem, 100%);
+    position: relative;
+    cursor: pointer;
+    z-index: 3;
+    display: none;
+    &.active {
+        display: block;
+    }
+    &::after,
+    &::before,
+    span {
+        background: $primary-color;
+        @include br(3px);
+        @include pseudo();
+        height: 3px;
+        margin: 5px 0;
+        @include transition(all $t ease-in-out);
+    }
+    &.transform {
+        &::before {
+            @include transform(translateY(8px) rotate(135deg));
+        }
+        &::after {
+            @include transform(translateY(-8px) rotate(-135deg));
+        }
+        span {
+            @include transform(scale(0));
+        }
+    }
+}
+
+.btn-video {
+    position: relative;
+    @include flexbox(flex-start, center);
+    width: 100%;
+    max-width: 26rem;
+    border: 1px solid $white-cl;
+    padding: 0 4.5rem 0;
+    i {
+        margin-left: 0;
+        z-index: 1;
+    }
+    span {
+        @include text(14px, pnR, 48.3px, $white-cl, none, 3.2px);
+        margin-left: 3rem;
+        z-index: 1;
+    }
+    &::after {
+        background: $primary-color;
+        opacity: 0.5;
+        @include pseudo();
+        @include fullscreen();
+        @include transform(scaleX(0));
+        @include transform-origin(left);
+        @include transition($t);
+        z-index: 0;
+    }
+    &:hover {
+        &::after {
+            @include transform(scaleX(1));
+            @include transition($t);
+        }
+    }
+}
+
+//Back to top
+.back-to-top {
+    position: fixed;
+    right: 3rem;
+    bottom: 8rem;
+    @include size(4rem);
+    cursor: pointer;
+    @include visible(0);
+    @include animation(roll 3s ease-out forwards infinite);
+    @include transition($t);
+
+    img {
+        @include mid();
+        @include size(2rem);
+        @include transition($t);
+    }
+    &::after {
+        @include pseudo();
+        @include fullscreen();
+        border: 3px solid $primary-color;
+        @include circle();
+    }
+    &:hover {
+        animation: none;
+        @include transform(scale(1.2));
+        @include transition($t);
+    }
+    &.active {
+        @include visible(1);
+    }
+    @include xs {
+        bottom: 3rem;
+    }
+}
+
+//animation
+@include keyframes(roll) {
+    0% {
+        transform: perspective(100px) rotate(0deg);
+    }
+    25% {
+        transform: perspective(100px) rotateX(180deg) rotateY(0);
+    }
+    50% {
+        transform: perspective(100px) rotateX(180deg) rotateY(180deg);
+    }
+    75% {
+        transform: perspective(100px) rotateX(0) rotateY(180deg);
+    }
+    100% {
+        transform: perspective(100px) rotateX(0) rotateY(0);
+    }
+}

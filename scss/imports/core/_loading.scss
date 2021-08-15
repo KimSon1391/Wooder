@@ -1,0 +1,17 @@
+// css loading
+.loading {
+    display: block;
+    @include fullscreen(true);
+    background: $white-cl;
+    z-index: 100;
+    @include visible(0);
+    @include transition($t);
+    overflow: hidden;
+    img {
+        @include mid();
+    }
+    &.active {
+        @include visible(1);
+        @include transition($t);
+    }
+}

@@ -1,0 +1,129 @@
+// css header
+.header {
+    @include size(100%, 8rem);
+    background: rgba(0, 0, 0, 0.184);
+    font-family: pnB;
+    color: white;
+    position: fixed;
+    z-index: 99;
+    &.active {
+        background: $black-cl;
+    }
+    h1 {
+        display: none;
+    }
+    .container-fluid {
+        height: 100%;
+        @include flexbox(space-between, center);
+        position: relative;
+    }
+    &__menu {
+        height: 100%;
+        display: flex;
+        @include absoluteCenter(left);
+        li {
+            height: 100%;
+            a {
+                height: 100%;
+                @include text(1.5rem, pnB, normal, $white-cl, uppercase, none);
+                @include mid(true);
+                padding: 0 3rem;
+                position: relative;
+                @include transition($t);
+                &.active {
+                    color: $primary-color;
+                }
+                &::after {
+                    @include pseudo();
+                    position: absolute;
+                    @include size(100%, 2px);
+                    background: $primary-color;
+                    @include positionabsolute(null, null, 2.1rem, 0);
+                    @include transform(scale(0));
+                    @include transform-origin(center);
+                    @include transition($t);
+                }
+                &:hover {
+                    letter-spacing: 1.2px;
+                    color: $primary-color;
+                    @include transition($t);
+                    &::after {
+                        @include transform(scale(1));
+                        @include transform-origin(center);
+                        @include transition($t);
+                    }
+                }
+            }
+        }
+    }
+
+    &__right {
+        display: flex;
+        align-items: center;
+    }
+
+    &__lang {
+        position: relative;
+        &-current {
+            @include size(3.5rem, 100%);
+            position: relative;
+            @include flexbox(flex-start, center);
+            span {
+                @include text(1.6rem, pnB, normal, $white-cl, uppercase, normal);
+                margin-right: 5px;
+                cursor: pointer;
+                @include transform($t);
+            }
+        }
+        .lang__option {
+            @include flexbox(flex-start, stretch, column);
+            width: 10rem;
+            background: $white-cl;
+            @include br(5px);
+            @include positionabsolute(100%, 0);
+            margin-top: 2rem;
+            @include transition($t);
+            @include visible(0);
+            &::before {
+                @include pseudo();
+                @include positionabsolute(0, 1.5rem);
+                @include triangle(up, 10px, $white-cl);
+                transform: translateY(-100%);
+            }
+            &-item {
+                font-family: pnB;
+                display: inline-block;
+                padding: 10px;
+                color: $black-cl;
+                text-align: center;
+                cursor: pointer;
+                &:not(:last-child) {
+                    border-bottom: 1px solid #00000023;
+                }
+            }
+            &.active {
+                @include visible(1);
+            }
+        }
+    }
+
+    //Responsive
+    @include md {
+        .header__menu {
+            position: relative;
+            left: 0;
+            @include transform(translateX(0));
+        }
+    }
+    @include sm {
+        .header__menu {
+            a {
+                display: none;
+            }
+        }
+    }
+
+    @include xs {
+        height: 5rem;
+    }
+}
