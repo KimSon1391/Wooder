@@ -200,19 +200,22 @@ $(document).ready(function () {
       goTo(index);
     });
   });
-});
+  $(window).on("load", function () {
+    // Photo swipe lib
+    initPhotoSwipeFromDOM(".gallery__grid");
 
-$(window).on("load", function () {
-  // Photo swipe lib
-  initPhotoSwipeFromDOM(".gallery__grid");
+    // AOS lib
+    AOS.init({
+      duration: 1000,
+    });
 
-  // AOS lib
-  AOS.init({
-    duration: 1000,
+    // loading show
+    let loading = $(".loading");
+    loading.removeClass("active");
+    if (!loading.hasClass("active")) {
+      $("body").removeClass("noScroll");
+    }
   });
-
-  // loading show
-  $(".loading").removeClass("active");
 });
 
 let $carousel = $(".slider-wrap");
